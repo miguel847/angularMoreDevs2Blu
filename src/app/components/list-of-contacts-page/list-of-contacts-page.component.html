@@ -4,8 +4,8 @@
         <button class="addContactBtn" (click)="addContact()">Adicionar Contato</button>
     </div>
     <div class="listDiv">
-        @for (item of contacts; track item) {
-            <app-contact [name]="item.name" [description]="item.description"></app-contact>
+        @for (item of contacts; track $index) {
+            <app-contact [id]="$index" [name]="item.name" [description]="item.description" [adress]="item.adress" (onDeleteButtonEvent)="deleteContact($event)"></app-contact>
         }
     </div>
 </main>
