@@ -1,0 +1,14 @@
+main {
+    background-color: #ff0000;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3px;
+}
+
+.Title {
+    color: #00ffff;
+    padding: 3px;
+}

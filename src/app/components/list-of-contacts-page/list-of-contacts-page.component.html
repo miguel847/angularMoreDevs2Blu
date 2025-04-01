@@ -1,0 +1,11 @@
+<main>
+    <div class="headerDiv">
+        <h2>Contatos</h2>
+        <button class="addContactBtn" (click)="addContact()">Adicionar Contato</button>
+    </div>
+    <div class="listDiv">
+        @for (item of contacts; track item) {
+            <app-contact [name]="item.name" [description]="item.description"></app-contact>
+        }
+    </div>
+</main>
