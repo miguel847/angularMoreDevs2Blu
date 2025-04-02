@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactComponent } from "../contact/contact.component";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-of-contacts-page',
@@ -9,6 +10,26 @@ import { ContactComponent } from "../contact/contact.component";
   styleUrl: './list-of-contacts-page.component.css'
 })
 export class ListOfContactsPageComponent {
+
+  dados : any
+  constructor(private http: HttpClient){}
+  ngOnInit() : void {
+    this.obterPrevisoes();
+  }
+
+  obterPrevisoes() : void {
+    let url = "http://localhost:5106/WeatherForecast";
+    this.http.get(url).subscribe({
+      next: (response) => {
+        this.dados = response;
+        console.log(this.dados);
+      },
+      error: (error) => {
+        alert("deu pau");
+      }
+    })
+  }
+
   addContact() : void {
     let c1 = new contact("placeholder", "placeholder", "placeholder");
     this.contacts.push(c1);
