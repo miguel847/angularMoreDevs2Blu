@@ -20,8 +20,8 @@ export class ListOfContactsPageComponent {
 
   constructor(private http: HttpClient){}
   ngOnInit() : void {
-    // this.obterContatos();
-    this.getServices();
+    this.obterContatos();
+    // this.getServices();
   }
 
   obterContatos() {

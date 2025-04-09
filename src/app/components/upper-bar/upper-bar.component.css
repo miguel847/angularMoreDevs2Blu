@@ -1,3 +1,17 @@
+nav {
+    background-color: #ff0000;
+    color: white;
+    padding: 1em;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+a {
+    color: white;
+    margin: 0 10px;
+}
+
 main {
     background-color: #ff0000;
     height: 10%;
@@ -11,4 +25,11 @@ main {
 .Title {
     color: #00ffff;
     padding: 3px;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
 }

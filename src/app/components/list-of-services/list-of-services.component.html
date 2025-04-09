@@ -1,0 +1,12 @@
+<main>
+    <div class="headerDiv">
+        <h2>Serviços</h2>
+        <button class="addContactBtn" (click)="addService()">Adicionar Serviço</button>
+    </div>
+    <div class="listDiv">
+        @for (item of services; track $index){
+            <app-service [id]="item.id" [description]="item.description" [manager]="item.manager" [team]="item.team"></app-service>
+        }
+    </div>
+</main>
+
