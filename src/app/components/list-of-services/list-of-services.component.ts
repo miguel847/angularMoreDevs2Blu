@@ -22,6 +22,7 @@ export class ListOfServicesComponent {
     let url = "http://localhost:5106/api/Services";
     this.http.get(url).subscribe({
       next: (response) => {
+        console.log(response)
         this.servicesApi = response;
         for (let s of this.servicesApi){
           this.services.push(new service(s.id, s.description, s.manager, s.team));
