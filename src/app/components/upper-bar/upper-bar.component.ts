@@ -12,6 +12,6 @@ import { Router, RouterModule } from '@angular/router';
 export class UpperBarComponent {
   route = new Router();
   logout() {
-
+    this.route.navigate(['/login']);
   }
 }

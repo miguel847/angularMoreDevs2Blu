@@ -5,7 +5,8 @@ import { ListOfServicesComponent } from './components/list-of-services/list-of-s
 import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'contatos', component: ListOfContactsPageComponent},
     {path: 'servicos', component: ListOfServicesComponent},

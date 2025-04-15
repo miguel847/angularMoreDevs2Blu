@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { UpperBarComponent } from "./components/upper-bar/upper-bar.component";
 import { ListOfContactsPageComponent } from "./components/list-of-contacts-page/list-of-contacts-page.component";
 import { HttpClientModule } from '@angular/common/http';
@@ -13,4 +13,18 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(private router : Router){
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd){
+        if(event.url === '/login' || event.url === '/'){
+          this.showNavBar = false;
+        }
+        else {
+          this.showNavBar = true;
+        }
+      }
+    })
+  }
+
+  showNavBar = true;
 }

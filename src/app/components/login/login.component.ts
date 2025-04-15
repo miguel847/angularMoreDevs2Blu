@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule, formatCurrency } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService, LoginRequest} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   email : string = '';
   senha : string = '';
 
-  constructor(private router: Router){
+  constructor(private router: Router, private authService : AuthService){
 
   }
 
@@ -23,12 +24,13 @@ export class LoginComponent {
       alert("Preencha todos os campos")
       return;
     }
-
-    if(this.email == 'Samuel' && this.senha == '123'){
-      return;
-    }
-    else {
-      alert("Email ou senha incorreto");
-    }
+    this.authService.login({email: this.email, senha: this.senha}).subscribe({
+      next: (response) => {
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        alert('Email ou senha incorretos');
+      }
+    });
   }
 }

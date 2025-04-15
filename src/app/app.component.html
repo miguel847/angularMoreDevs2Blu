@@ -1,6 +1,6 @@
 
 <main class="main">
-  <app-upper-bar></app-upper-bar>
+  <app-upper-bar *ngIf="showNavBar"></app-upper-bar>
   <router-outlet></router-outlet>
 </main>
 
