@@ -1,0 +1,11 @@
+<div class="form-container">
+    <h1>Cadastro de Serviço</h1>
+    <form #form="ngForm" (submit)="save(form)">
+        <div class="mb-3">
+            <label for="description" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="serviceRequest.description" required>
+        </div>
+        <button class="btn btn-secundary" (click)="back()">Voltar</button>
+        <button class="btn btn-success" type="submit">Salvar</button>
+    </form>
+</div>

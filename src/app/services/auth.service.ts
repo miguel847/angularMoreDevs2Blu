@@ -18,14 +18,22 @@ export class AuthService {
 
   private apiUrl = `${environment.apiUrl}/auth`;
 
+  userName = '';
+
   constructor(private http: HttpClient) {}
 
   login(dados : LoginRequest) : Observable<LoginResponse>{
     return this.http.post<LoginResponse>(this.apiUrl, dados).pipe(
       tap((response) => {
+        this.userName = dados.email;
         localStorage.setItem('token', response.token);
       })
     )
+  }
+
+  logout() {
+    this.userName = '';
+    localStorage.removeItem('token');
   }
 
 }

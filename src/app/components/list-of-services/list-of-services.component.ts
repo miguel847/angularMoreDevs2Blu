@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServiceComponent } from '../service/service.component';
+import { ServicesService } from '../../services/services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-of-services',
@@ -13,20 +15,16 @@ export class ListOfServicesComponent {
   services : ServiceComponent[] = [];
   servicesApi : any;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private serviceService : ServicesService, private router : Router){}
   ngOnInit() : void {
     this.getServices();
   }
 
   getServices() {
-    let url = "http://localhost:5106/api/Services";
-    this.http.get(url).subscribe({
+    this.serviceService.getServices().subscribe({
       next: (response) => {
         console.log(response)
-        this.servicesApi = response;
-        for (let s of this.servicesApi){
-          this.services.push(new service(s.id, s.description, s.manager, s.team));
-        }
+        this.services = response;
       },
       error: (error) => {
         console.log(error);
@@ -34,8 +32,7 @@ export class ListOfServicesComponent {
     });
   }
   addService() : void {
-    let s1 = new service(-1,"placeholder", "placeholder", "placeholder");
-    this.services.push(s1);
+    this.router.navigate(['/register-service']);
   }
   deleteService(id : number) : void {
     console.log(this.services.splice(id, 1));
